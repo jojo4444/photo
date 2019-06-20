@@ -9,12 +9,10 @@ namespace gui
 	protected:
 		sf::Texture BTexture;
 		sf::Sprite BSprite;
-		sf::Font Bfont;
-		sf::Text BText;
-		sf::Cursor BCur;
-		sf::RenderWindow* window;
-		sf::Vector2f position;
-
+		sf::RenderWindow* Window;
+	protected:
+		bool containsCursorButton();
+		bool ButtonPressed();
 	public:
 		ButtonBase(const std::string& pathToTextur,sf::RenderWindow* win, sf::Vector2f position);
 		void draw();
