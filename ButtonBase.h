@@ -15,8 +15,10 @@ namespace gui
 		bool ButtonPressed();
 	public:
 		ButtonBase(const std::string& pathToTextur,sf::RenderWindow* win, sf::Vector2f position);
+		sf::Vector2i size();
 		void draw();
-		void move(const sf::Vector2f&);
+		virtual void move(const sf::Vector2f&);
+		void moveCent();
 		void update(const std::string&);
 		bool ispushed();
 		~ButtonBase();

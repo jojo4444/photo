@@ -3,13 +3,16 @@
 
 #include <iostream>
 #include "WindowBase.h"
+#include "MainWindow.h"
+#include "Errorlog.h"
 #include "SFML/Window.hpp"
 #include <SFML/Graphics.hpp>
 
 int main()
 {
-	gui::WindowBase w("win");
-	w(1,1);
+
+	gui::MainWindow main("Photo", 800, 600);
+	main.run();
 	return 0;
 }
 

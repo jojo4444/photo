@@ -1,6 +1,5 @@
 #include "ButtonBase.h"
 
-
 namespace gui
 {
 	ButtonBase::ButtonBase(const std::string& pathToTexture, sf::RenderWindow* win,sf::Vector2f position)
@@ -10,7 +9,11 @@ namespace gui
 		BSprite.setTexture(BTexture);
 		BSprite.setPosition(position);
 	}
-
+	sf::Vector2i ButtonBase::size()
+	{
+		sf::IntRect Rect = BSprite.getTextureRect();
+		return sf::Vector2i(Rect.width - Rect.left, Rect.height - Rect.top);
+	}
 	void ButtonBase::draw()
 	{
 		Window->draw(BSprite);
@@ -46,6 +49,13 @@ namespace gui
 	void ButtonBase::update(const std::string& file)
 	{
 
+	}
+	void ButtonBase::moveCent()
+	{
+		sf::Vector2f Position(size());
+		Position.x /= (-2);
+		Position.y = 0;
+		move(Position);
 	}
 	ButtonBase::~ButtonBase()
 	{}
