@@ -2,6 +2,7 @@
 
 #include <windows.h>
 #include <string>
+#include <iostream>
 #include <cstring>
 #include <SFML/Graphics.hpp>
 
@@ -23,6 +24,7 @@ public:
     bool saveImage(const Image& T);
     Image getImage();
 private:
+    string convertWay(char* way);
     string OpenDialog(int status);
 
     Image img_;

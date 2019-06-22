@@ -61,16 +61,27 @@ string FileDialogWindow::OpenDialog(int status) {
     if (status == LOAD) {
         if(GetOpenFileName(&ofn)) {
             memcpy(way, ofn.lpstrFile, strlen(ofn.lpstrFile));
-            return string(way);
+            return convertWay(way);
         } else {
             return FAILED_UPLOAD;
         }
     } else if (status == SAVE) {
         if(GetSaveFileName(&ofn)) {
             memcpy(way, ofn.lpstrFile, strlen(ofn.lpstrFile));
-            return string(way);
+            return convertWay(way);
         } else {
             return FAILED_SAVE;
         }
     }
+}
+
+string FileDialogWindow::convertWay(char* way) {
+    string wayStr = "";
+    for (int i = 0; way[i]; ++i) {
+        if (way[i] == '\\') {
+            wayStr.push_back('\\');
+        }
+        wayStr.push_back(way[i]);
+    }
+    return wayStr;
 }
