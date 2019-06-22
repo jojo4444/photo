@@ -13,6 +13,7 @@ namespace gui
 	protected:
 		bool containsCursorButton();
 		bool ButtonPressed();
+		bool Focused();
 	public:
 		ButtonBase(const std::string& pathToTextur,sf::RenderWindow* win, sf::Vector2f position);
 		sf::Vector2i size();

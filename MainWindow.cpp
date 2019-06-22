@@ -58,7 +58,6 @@ namespace gui
 			{
 				filter.run();
 			}
-
 			while (main.pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed)

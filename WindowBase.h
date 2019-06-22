@@ -18,7 +18,6 @@ namespace gui
 	protected:
 		void makeNewWindowThread(WindowBase&);
 		void makeNewWindowThreadAndWait(WindowBase& tmp);
-
 	public:
 		WindowBase(const std::string&,size_t w, size_t h);
 		virtual void run() = 0;

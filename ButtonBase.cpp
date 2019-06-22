@@ -23,9 +23,15 @@ namespace gui
 		sf::Vector2i cursor(sf::Mouse::getPosition(*Window));
 		sf::Vector2f wcursor = (Window->mapPixelToCoords(cursor));
 		if (BSprite.getGlobalBounds().contains(wcursor))
+		{
+			BSprite.setColor(sf::Color(180, 180, 234, 254));
 			return true;
+		}
 		else
+		{
+			BSprite.setColor(sf::Color(255,255,255,255));
 			return false;
+		}
 	}
 	
 	bool ButtonBase::ButtonPressed()
@@ -35,9 +41,20 @@ namespace gui
 		else
 			return false;
 	}
+	bool ButtonBase::Focused()
+	{
+		sf::Event event;
+		while (Window->pollEvent(event))
+		{
+			if (event.type == sf::Event::GainedFocus)
+				return true;
+			else
+				return false;
+		}
+	}
 	bool ButtonBase::ispushed()
 	{
-		if (containsCursorButton() && ButtonPressed())
+		if (containsCursorButton() && ButtonPressed() && Window->hasFocus())
 			return true;
 		else
 			return false;

@@ -1,6 +1,6 @@
 #include "FunctionalImageButton.h"
 #include "Errorlog.h"
-#include "iostream"
+#include "FileDialogWindow.hpp"
 #include "Color.h"
 
 namespace gui
@@ -24,7 +24,6 @@ namespace gui
 	}
 	sf::Image& FunctionalImageButton::getImage()
 	{
-		released = false;
 		return loadedImage;
 	}
 	void FunctionalImageButton::ChangeSprite()
@@ -53,50 +52,11 @@ namespace gui
 	void FunctionalImageButton::run()
 	{
 		std::string str;
-		std::cin >> str;
+		FileDialogWindow reader;
+		str = reader.loadImage();
+		if (str == FAILED_UPLOAD)
+			return;
 		Realize(str);
-
-		/*sf::RenderWindow window(sf::VideoMode(W, H/2), Name, sf::Style::Close | sf::Style::Titlebar);
-		sf::Font font;
-		if (!font.loadFromFile("res/arial.ttf"))
-		{
-			Errorlog error (W / 2, H / 2,"what");
-			makeNewWindowThread(error);
-		}
-		sf::Text text("", font, 50);
-		text.setPosition(W, H / 2);
-		while (window.isOpen())
-		{
-			sf::Event event;
-			while (window.pollEvent(event))
-			{
-			
-				std::string str;
-				sf::Text text;
-				if (event.type == sf::Event::TextEntered)
-				{
-
-					if (event.text.unicode < 128)
-					{
-						str += static_cast<char>(event.text.unicode);
-						text.setString(str);
-					}
-				}
-
-				if (event.type == sf::Keyboard::Enter)
-				{
-					Realize(str);
-					window.close();
-				}
-				if (event.type == sf::Event::Closed)
-				{
-					window.close();
-				}
-			}
-			window.clear(BACKGROUND);
-			window.draw(text);
-			window.display();
-		}*/
 	}
 
 	FunctionalImageButton::~FunctionalImageButton()
