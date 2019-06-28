@@ -1,29 +1,17 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include <algorithm>
-
-using namespace sf;
-using std::vector;
-
-int intSquare(int x);
-
-bool colorCmp(Color& u, Color& v);
+#include <iostream>
+#include <cstring>
 
 class Algo{
 public:
     Algo();
-    Algo(const Image& first, const Image& second);
-    void upload(const Image& first, const Image& second);
-    Image getResult();
+    void upload(const sf::Image& content, const sf::Image& style);
+    sf::Image getResult();
 
 private:
-    vector <Color> calculate(const Image& T);
-    void assignColorsConvertor();
-    Color findColor(Color u);
+    bool isBlack(const sf::Image& img) const;
+    sf::Image content_, style_;
 
-    vector<vector<vector <int> > > convertColors_;
-    Image first_, second_;
-    vector <Color> firstColors_, secondColors_;
 };
