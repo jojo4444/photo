@@ -4,6 +4,7 @@
 #include "Errorlog.h"
 #include "Color.h"
 #include "Algo.hpp"
+#include "LoadingWindow.h"
 
 
 namespace gui
@@ -48,6 +49,11 @@ namespace gui
 						resultWin.display();
 					}
 
+				}
+				else
+				{
+					LoadingWindow loading_window("Loading", W, H);
+					loading_window.run();
 				}
 			}
 			if (found.ispushed())

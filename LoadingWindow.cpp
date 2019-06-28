@@ -12,7 +12,7 @@ namespace gui
 	{
 		sf::RenderWindow loading_window(sf::VideoMode(W, H), Name, sf::Style::Close | sf::Style::Titlebar);
 
-		LoadingRing loading_ring("loading_ring.png", W/2, H/2);
+		LoadingRing loading_ring("res/loading_ring.png", W/2, H/2);
 
 		while (loading_window.isOpen())
 		{
@@ -26,7 +26,7 @@ namespace gui
 
 			// text of loading
 			sf::Font font;
-			font.loadFromFile("calibril.ttf");
+			font.loadFromFile("res/Tahoma.ttf");
 			sf::Text text;
 			text.setFont(font);
 			text.setString("Loading");
